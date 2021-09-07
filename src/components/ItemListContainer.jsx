@@ -3,7 +3,7 @@ function ItemListContainer({greeting}) {
     return (
         <div>
             <p>{greeting}</p>
-            <ItemCount/>
+            <ItemCount stock initial = {5,1,'ItemCount'}/>
             </div>
     )
 }
