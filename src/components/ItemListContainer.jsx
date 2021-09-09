@@ -1,7 +1,7 @@
 import ItemCount from './ItemCount'
 
-const onAdd = (cant) =>{
-    console.log(cant)
+const onAdd = (addCount) =>{
+    console.log(addCount)
 }
 function ItemListContainer({greeting}) {
     return (
