@@ -1,4 +1,5 @@
 import React from 'react'
+import logomauro from '../assets/images/logomauro.png';
 
 const Item = ({producto}) => {
     return (
@@ -7,7 +8,7 @@ const Item = ({producto}) => {
                         {producto.title}
                     </div>
                     <div className ="card-img-top">
-                        {producto.pictureUrl}
+                    <img src={logomauro} alt="logo"/>
                     </div>
                     <div className ="list-group-item">
                         {producto.description}
