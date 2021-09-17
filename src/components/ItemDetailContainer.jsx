@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react"
-import {getProducto1} from "../utils/promesas";
+import {getProducto2} from "../utils/mock";
 import ItemDetail from './ItemDetail';
 
 
@@ -8,7 +8,7 @@ function ItemDetailContainer () {
     const [cargando, setCargando] = useState (true)
 
     useEffect(()=>{
-        getProducto1
+        getProducto2
         .then(resp => {
             setProducto(resp)
             setCargando(false)

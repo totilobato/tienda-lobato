@@ -1,3 +1,4 @@
+import Nav from 'react-bootstrap/Nav'
 import CartWidget from './CartWidget';
 import logomauro from '../assets/images/logomauro.png';
 function NavBar() {
@@ -5,33 +6,32 @@ function NavBar() {
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
 <div className="container-fluid">
-    <img src={logomauro} width="40" height="40" alt="logo"/>
-    <a className="navbar-brand" href="#">Inicio</a>
+    <Nav.Link className="navbar-brand" href="#"><img src={logomauro} width="40" height="40" alt="logo"/></Nav.Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav">
         <li className="nav-item">
-        <a className="nav-link active" aria-current="page" href="#">Fertilizantes</a>
+        <Nav.Link className="nav-link active" aria-current="page" href="#">Fertilizantes</Nav.Link>
         </li>
         <li className="nav-item">
-        <a className="nav-link" href="#">Sustratos</a>
+        <Nav.Link className="nav-link" href="#">Sustratos</Nav.Link>
         </li>
         <li className="nav-item">
-        <a className="nav-link" href="#">Carpas</a>
+        <Nav.Link className="nav-link" href="#">Carpas</Nav.Link>
         </li>
         <li className="nav-item">
-        <a className="nav-link" href="#">Iluminación</a>
+        <Nav.Link className="nav-link" href="#">Iluminación</Nav.Link>
         </li>
         <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <Nav.Link className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Parafernalia
-        </a>
+            </Nav.Link>
         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a className="dropdown-item" href="#">Picadores</a></li>
-            <li><a className="dropdown-item" href="#">Papeles y Filtros</a></li>
-            <li><a className="dropdown-item" href="#">Bongs y Pipas</a></li>
+            <li><Nav.Link className="dropdown-item" href="#">Picadores</Nav.Link></li>
+            <li><Nav.Link className="dropdown-item" href="#">Papeles y Filtros</Nav.Link></li>
+            <li><Nav.Link className="dropdown-item" href="#">Bongs y Pipas</Nav.Link></li>
         </ul>
         </li>
     </ul>
