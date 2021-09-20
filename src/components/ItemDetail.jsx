@@ -5,7 +5,7 @@ function ItemDetail (props){
     return(
         <div key={producto.id} className='card w-50 mt-2'>
                     <div className="card-header">
-                        {producto.title}
+                        {producto.name}
                     </div>
                     <div className ="card-img-top">
                     <img src={logomauro} alt="logo"/>

@@ -1,27 +1,29 @@
 import {useState, useEffect} from "react"
-import {getProducto2} from "../utils/mock";
+import {getFetch} from '../utils/mock';
+import {useParams} from 'react-router';
 import ItemDetail from './ItemDetail';
 
 
 function ItemDetailContainer () {
-    const [producto, setProducto] = useState({})
-    const [cargando, setCargando] = useState (true)
+    const [item, setItem] = useState({})
 
+    const {id} = useParams();
     useEffect(()=>{
-        getProducto2
-        .then(resp => {
-            setProducto(resp)
-            setCargando(false)
-        })
-    }, [])
-console.log(producto)
 
+        getFetch
+        .then(resp => {
+            if (id) {
+                const itemFiltrado = resp.filter((item) => item.id === id)
+                setItem(itemFiltrado)
+            }else {
+                setItem(resp)
+            }
+        })
+        .catch((err)=> console.log(err))
+    }, [id])
 return(
     <>
-        {cargando ? <h3>Cargando productos...</h3> 
-        : 
-        <ItemDetail producto={producto}/>
-        }
+        <ItemDetail key={item} item={item}/>
     </>
 )}
 
