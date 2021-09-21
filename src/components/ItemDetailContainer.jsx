@@ -6,25 +6,28 @@ import ItemDetail from './ItemDetail';
 
 function ItemDetailContainer () {
     const [item, setItem] = useState({})
+    const [loading, setLoading] = useState(true)
+    const {category} = useParams();
 
-    const {id} = useParams();
     useEffect(()=>{
 
         getFetch
         .then(resp => {
-            if (id) {
-                const itemFiltrado = resp.filter((item) => item.id === id)
+            if (category) {
+                const itemFiltrado = resp.filter((item) => item.category === category)
                 setItem(itemFiltrado)
             }else {
                 setItem(resp)
             }
         })
-        .catch((err)=> console.log(err))
-    }, [id])
+        .catch(err=>console.log(err))
+        .finally(()=> setLoading(false))
+    }, [category])
 return(
     <>
-        <ItemDetail key={item} item={item}/>
+        {loading ? <h3>Loading...</h3> : <ItemDetail key={item} item={item}/>}
     </>
-)}
+    )
+}
 
 export default ItemDetailContainer 
