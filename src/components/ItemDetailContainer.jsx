@@ -14,7 +14,7 @@ function ItemDetailContainer () {
         getFetch
         .then(resp => {
             if (id) {
-                const itemFiltrado = resp.filter((item) => item.id === id)
+                const itemFiltrado = resp.filter((item) => parseInt(item.id) === parseInt(id))
                 setItem(itemFiltrado)
             }else {
                 setItem(resp)
@@ -25,7 +25,7 @@ function ItemDetailContainer () {
     }, [id])
 return(
     <>
-        {loading ? <h3>Loading...</h3> : <ItemDetail key={item} item={item}/>}
+        {loading ? <h3>Loading...</h3> : <ItemDetail key={item[0].id} item={item[0]}/>}
     </>
     )
 }

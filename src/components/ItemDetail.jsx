@@ -1,8 +1,12 @@
-//import {useState, useEffect} from 'react'
-import Nav from 'react-bootstrap/Nav'
+import ItemCount from './ItemCount';
 import logomauro from '../assets/images/logomauro.png';
+
 function ItemDetail (props){
-    const {producto} = props
+
+    const producto = props
+    const onAdd = (addCount) =>{
+        console.log(addCount)
+    }
 
     return(
         <div>
@@ -16,9 +20,7 @@ function ItemDetail (props){
                     <div className ="list-group-item">
                         {producto.description}
                     </div>
-                    <Nav.Link href={'/item/${ID}'}>
-                    <button className="btn btn-outline-primary btn-block">Detalles</button>
-                    </Nav.Link>
+                    <ItemCount stock={10} initial={1} onAdd={onAdd}/>
                     <div className="card-body">
                         {producto.price}
                     </div>

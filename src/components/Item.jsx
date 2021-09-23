@@ -13,7 +13,7 @@ const Item = ({producto}) => {
                     <div className ="list-group-item">
                         {producto.description}
                     </div>
-                    <Nav.Link href={'/item/${ID}'}>
+                    <Nav.Link href={`/item/${producto.id}`}>
                     <button className="btn btn-outline-primary btn-block">Detalles</button>
                     </Nav.Link>
                     <div className="card-body">
