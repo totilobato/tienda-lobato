@@ -1,15 +1,14 @@
 import {useState, useEffect} from 'react'
 import {getFetch} from '../utils/mock'
+import {useParams} from 'react-router';
 import ItemCount from './ItemCount'
 import ItemList from './ItemList'
-
-
-console.log(getFetch)
 
 
 function ItemListContainer({greeting}) {
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
+    const {categoryId} = useParams();
 
     const onAdd = (addCount) =>{
         console.log(addCount)
@@ -17,12 +16,17 @@ function ItemListContainer({greeting}) {
     
     useEffect (()=>{
         getFetch
-        .then(respuesta =>{
-            setProductos(respuesta)
+        .then(respuesta => {
+            if (categoryId) {
+                const catFiltrada = respuesta.filter((item) => item.categoryId === categoryId)
+                setProductos(catFiltrada)
+            }else {
+                setProductos(respuesta)
+            }
         })
         .catch(err=>console.log(err))
         .finally(()=> setLoading(false))
-    }, [])
+    }, [categoryId])
 
 
     return (

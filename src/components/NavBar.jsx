@@ -13,25 +13,25 @@ function NavBar() {
     <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav">
         <li className="nav-item">
-        <Nav.Link className="nav-link active" aria-current="page" href={'/category/{categoryId}'}>Fertilizantes</Nav.Link>
+        <Nav.Link className="nav-link active" aria-current="page" href={'/category/fertilizantes'}>Fertilizantes</Nav.Link>
         </li>
         <li className="nav-item">
-        <Nav.Link className="nav-link" href={'/category/{categoryId}'}>Sustratos</Nav.Link>
+        <Nav.Link className="nav-link" href={'/category/sustratos'}>Sustratos</Nav.Link>
         </li>
         <li className="nav-item">
-        <Nav.Link className="nav-link" href={'/category/{categoryId}'}>Carpas</Nav.Link>
+        <Nav.Link className="nav-link" href={'/category/carpas'}>Carpas</Nav.Link>
         </li>
         <li className="nav-item">
-        <Nav.Link className="nav-link" href={'/category/{categoryId}'}>Iluminación</Nav.Link>
+        <Nav.Link className="nav-link" href={'/category/iluminacion'}>Iluminación</Nav.Link>
         </li>
         <li className="nav-item dropdown">
-        <Nav.Link className="nav-link dropdown-toggle" href={'/category/{categoryId}'} id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <Nav.Link className="nav-link dropdown-toggle" href={'/category/parafernalia'} id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Parafernalia
             </Nav.Link>
         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><Nav.Link className="dropdown-item" href={'/category/{categoryId}'}>Picadores</Nav.Link></li>
-            <li><Nav.Link className="dropdown-item" href={'/category/{categoryId}'}>Papeles y Filtros</Nav.Link></li>
-            <li><Nav.Link className="dropdown-item" href={'/category/{categoryId}'}>Bongs y Pipas</Nav.Link></li>
+            <li><Nav.Link className="dropdown-item" href={'/category/parafernalia/picadores'}>Picadores</Nav.Link></li>
+            <li><Nav.Link className="dropdown-item" href={'/category/parafernalia/papelesyfiltros'}>Papeles y Filtros</Nav.Link></li>
+            <li><Nav.Link className="dropdown-item" href={'/category/parafernalia/bongsypipas'}>Bongs y Pipas</Nav.Link></li>
         </ul>
         </li>
     </ul>
