@@ -1,31 +1,52 @@
+import { useState } from "react";
+import {Link} from 'react-router-dom'
 import ItemCount from './ItemCount';
+import useAppContext from "../context/context";
+import { Col, Row } from "react-bootstrap"
 import logomauro from '../assets/images/logomauro.png';
 
 function ItemDetail (props){
-
+    
+    const [cambiarBoton, setCambiarBoton] = useState(false)
     const producto = props
-    const onAdd = (addCount) =>{
-        console.log(addCount)
+    const {agregarAlCarrito} =useAppContext()
+    const onAdd = (cant) =>{
+        console.log(cant)
+        agregarAlCarrito(producto, cant)
+        setCambiarBoton (true)
     }
 
     return(
-        <div>
-        <div key={producto.id} className='card w-50 mt-2'>
-                    <div className="card-header">
-                        {producto.title}
-                    </div>
+        <>
+            <Row>
+                <Col>
+                    <div key={producto.id} className='card w-50 container'>
+                        <div className="card-header">
+                            {producto.title}
+                        </div>
                     <div className ="card-img-top">
-                    <img src={logomauro} alt="logo"/>
+                        <img src={logomauro} alt="logo"/>
                     </div>
                     <div className ="list-group-item">
                         {producto.description}
                     </div>
-                    <ItemCount stock={10} initial={1} onAdd={onAdd}/>
+                    
                     <div className="card-body">
                         {producto.price}
                     </div>
                 </div>
-                </div>
+                </Col>
+                <Col>
+                <ItemCount stock={10} initial={1} onAdd={onAdd} cambiarBoton={cambiarBoton}/>
+                {
+                    cambiarBoton &&
+                    <Link to ='cart'>
+                        <button className="btn btn-outline-warning btn-block">Finalizar Compra</button>
+                    </Link>
+                }
+                </Col>
+            </Row>
+        </>
     )
 }
 
