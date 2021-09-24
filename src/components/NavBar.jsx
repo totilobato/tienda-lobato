@@ -13,19 +13,19 @@ function NavBar() {
     <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav">
         <li className="nav-item">
-        <Nav.Link className="nav-link active" aria-current="page" href={'/category/fertilizantes'}>Fertilizantes</Nav.Link>
+        <Nav.Link className="nav-link active" aria-current="page" href={'/category/Fertilizantes'}>Fertilizantes</Nav.Link>
         </li>
         <li className="nav-item">
-        <Nav.Link className="nav-link" href={'/category/sustratos'}>Sustratos</Nav.Link>
+        <Nav.Link className="nav-link" href={'/category/Sustratos'}>Sustratos</Nav.Link>
         </li>
         <li className="nav-item">
-        <Nav.Link className="nav-link" href={'/category/carpas'}>Carpas</Nav.Link>
+        <Nav.Link className="nav-link" href={'/category/Carpas'}>Carpas</Nav.Link>
         </li>
         <li className="nav-item">
-        <Nav.Link className="nav-link" href={'/category/iluminacion'}>Iluminación</Nav.Link>
+        <Nav.Link className="nav-link" href={'/category/Iluminacion'}>Iluminación</Nav.Link>
         </li>
         <li className="nav-item dropdown">
-        <Nav.Link className="nav-link dropdown-toggle" href={'/category/parafernalia'} id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <Nav.Link className="nav-link dropdown-toggle" href={'/category/Parafernalia'} id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Parafernalia
             </Nav.Link>
         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">

@@ -5,7 +5,7 @@ const Item = ({producto}) => {
     return (
         <div key={producto.id} className='card w-50 mt-2'>
                     <div className="card-header">
-                        {producto.name}
+                        {producto.title}
                     </div>
                     <div className ="card-img-top">
                     <img src={logomauro} alt="logo"/>

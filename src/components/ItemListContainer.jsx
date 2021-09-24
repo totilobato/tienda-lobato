@@ -7,22 +7,23 @@ import ItemList from './ItemList'
 function ItemListContainer({greeting}) {
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
-    const {category} = useParams();
+    const {categoryId} = useParams();
  
     useEffect (()=>{
         getFetch
         .then(respuesta => {
-            if (category) {
-                const catFiltrada = respuesta.filter((item) => item.categoryId === category)
+            if (categoryId) {
+                const catFiltrada = respuesta.filter((productos) => productos.categoryId === categoryId)
                 setProductos(catFiltrada)
+                console.log(catFiltrada)
             }else {
                 setProductos(respuesta)
-            }
+            } 
         })
+        
         .catch(err=>console.log(err))
         .finally(()=> setLoading(false))
-    }, [category])
-
+    }, [categoryId])
 
     return (
         <div>

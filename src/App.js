@@ -8,15 +8,14 @@ function App() {
 <BrowserRouter>
   <>
     <NavBar/>
-
     <Switch>
       <Route exact path='/'>
         <ItemListContainer greeting='Bienvenidos a Bora Bora GrowShop!'/>
       </Route>
-      <Route exact path='/category/:id'>
+      <Route exact path='/category/:categoryId'>
         <ItemListContainer greeting='Bienvenidos a Bora Bora GrowShop!'/>
       </Route>
-      <Route exact path='/item/:id'>
+      <Route exact path='/item/:categoryId'>
         <ItemDetailContainer/>
       </Route>
     <Route exact path='/Cart'>
