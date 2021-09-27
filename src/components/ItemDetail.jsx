@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {Link} from 'react-router-dom'
 import ItemCount from './ItemCount';
-import useAppContext from "../context/context";
+//import AppContextProvider from "../context/context";
 import { Col, Row } from "react-bootstrap"
 import logomauro from '../assets/images/logomauro.png';
 
@@ -9,10 +9,10 @@ function ItemDetail (props){
     
     const [cambiarBoton, setCambiarBoton] = useState(false)
     const producto = props
-    const {agregarAlCarrito} =useAppContext()
+    //const {agregarAlCarrito} 
     const onAdd = (cant) =>{
         console.log(cant)
-        agregarAlCarrito(producto, cant)
+        //agregarAlCarrito(producto, cant)
         setCambiarBoton (true)
     }
 
@@ -37,13 +37,20 @@ function ItemDetail (props){
                 </div>
                 </Col>
                 <Col>
-                <ItemCount stock={10} initial={1} onAdd={onAdd} cambiarBoton={cambiarBoton}/>
-                {
-                    cambiarBoton &&
-                    <Link to ='cart'>
-                        <button className="btn btn-outline-warning btn-block">Finalizar Compra</button>
-                    </Link>
-                }
+                {cambiarBoton ? (
+            <Link to="/cart">
+            <button className="btn btn-outline-warning btn-block">
+                Finalizar Compra
+            </button>
+            </Link>
+        ) : (
+            <ItemCount
+            stock={10}
+            initial={1}
+            onAdd={onAdd}
+            cambiarBoton={cambiarBoton}
+            />
+        )}
                 </Col>
             </Row>
         </>

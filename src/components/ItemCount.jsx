@@ -40,7 +40,7 @@ export default function ItemCount({stock, initial, onAdd}) {
           </Link>
         </div>
         :
-        <button className="btn btn-outline-primary btn-block" onClick={handlerOnAdd}>Agregar</button>
+        <button className="btn btn-outline-primary btn-block" onClick={handlerOnAdd}>Agregar al Carrito</button>
       }
     </div>
     </>
