@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {Link} from 'react-router-dom'
 import ItemCount from './ItemCount';
-//import AppContextProvider from "../context/context";
+import { useCartContext } from "../context/CartContext";
 import { Col, Row } from "react-bootstrap"
 import logomauro from '../assets/images/logomauro.png';
 
@@ -9,10 +9,10 @@ function ItemDetail (props){
     
     const [cambiarBoton, setCambiarBoton] = useState(false)
     const producto = props
-    //const {agregarAlCarrito} 
+    const { addToCart } = useCartContext()
     const onAdd = (cant) =>{
         console.log(cant)
-        //agregarAlCarrito(producto, cant)
+        addToCart({producto: producto, cantidad: cant})
         setCambiarBoton (true)
     }
 
