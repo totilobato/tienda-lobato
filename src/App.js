@@ -14,13 +14,13 @@ function App() {
       <Route exact path='/'>
         <ItemListContainer greeting='Bienvenidos a Bora Bora GrowShop!'/>
       </Route>
-      <Route exact path='/category/:categoryId'>
+      <Route exact path='/category/:categoryId' component={ItemListContainer}>
         <ItemListContainer greeting='Bienvenidos a Bora Bora GrowShop!'/>
       </Route>
-      <Route exact path='/item/:categoryId'>
+      <Route exact path='/item/:categoryId' component={ItemDetailContainer}>
         <ItemDetailContainer/>
       </Route>
-    <Route exact path='/Cart'>
+    <Route exact path='/Cart' component={Cart}>
       <Cart/>
     </Route>
     </Switch>
