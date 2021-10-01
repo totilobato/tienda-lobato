@@ -28,7 +28,7 @@ export default function CartContextProvider({children}) {
     }
 
     const clearList =()=>{
-        cartList([])
+        setCartList([])
     }       
 
     const totalPrice =()=>{
