@@ -28,7 +28,7 @@ export default function ItemCount({stock, initial, onAdd}) {
     </div>      
       <h3>{count}</h3>
     <div className ="w-50">
-      <button onClick = {() =>removeCount()}>-</button>
+      <button className="btn btn-warning" onClick = {() =>removeCount()}>-</button>
       {
         cambiarBoton ? 
         <div>

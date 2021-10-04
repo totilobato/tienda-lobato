@@ -1,51 +1,63 @@
 import {useState, createContext, useContext} from 'react'
 
-const CartContext = createContext([])
+const CartContext = createContext()
 
 export const useCartContext = () => useContext(CartContext)
 
-export default function CartContextProvider({children}) {
-    const [cartList, setCartList] = useState([]);
+const CartContextProvider = ({children}) => {
+    const [cart, setCart] = useState([]);
 
-    const addToCart = (item, quantity) => {
-        const index = cartList.findIndex(i =>i.id === item.id)
-        if(index > -1){
-            const oldQuantity = cartList[index].quantity
-            cartList.splice(index, 1)
-            setCartList([...cartList, {item, quantity: quantity + oldQuantity}])
-        } else {
-            setCartList([...cartList, {item, quantity}])
+    const isInCart = id => cart.find(prod=>prod.id === id)
+    const addToCart = product => {
+        const newCart = [...cart];
+        const productIsInCart = isInCart(product.id);
+        console.log(productIsInCart)
+        if(productIsInCart){
+            newCart[newCart.findIndex(prod=>prod.id == productIsInCart.id)].quantity++;
+        setCart(newCart);
+        console.log(cart);
+        return;
         }
+        product.quantity = 1;
+        setCart ([
+            ...newCart,product
+        ]);
+        console.log(cart)    
     }
-
-    const deleteFromCart = (item) => {
-        const deleteProduct = cartList.filter((prod) => prod.item.id !== item.item.id);
-        setCartList([...deleteProduct]);
-    };
-
+    const deleteFromCart = (product) => {
+        const newCart = [...cart];
+        const productIsInCart = isInCart(product.id);
+        console.log(productIsInCart)
+        if(!productIsInCart){
+            console.log('El producto no se encuentra en el Carrito')
+            return;
+        }
+        const deleteProduct = newCart.filtler(prod=>prod.id !== productIsInCart.id);
+        setCart(deleteProduct);
+        console.log(cart)
+    }
+    const deleteCart = () => setCart([]);
     const iconCart = () => {
-        return cartList.reduce((acum, valor)=> acum + valor.quantity, 0) 
+        return cart.reduce( (acum, valor)=> acum + valor.quantity, 0)
     }
-
-    const clearList =()=>{
-        setCartList([])
-    }       
-
     const totalPrice =()=>{
-        return cartList.reduce((acum, valor)=>(acum + (valor.quantity * valor.item.price)), 0) 
+        return cart.reduce((acum, valor)=>(acum + (valor.quantity * valor.item.price)), 0) 
     }
-    console.log(cartList)
 
+    
     return (
         <CartContext.Provider value={{
-            cartList,
+            cart,
+            setCart,
             addToCart,
             iconCart,
             deleteFromCart,
-            clearList,
-            totalPrice
+            deleteCart,
+            totalPrice,
         }}>
             {children}
         </CartContext.Provider>
-    )
-}
+    );
+};
+
+export default CartContextProvider;
