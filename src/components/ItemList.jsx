@@ -1,5 +1,5 @@
 import React from 'react'
-import Item from './Item'
+import Producto from './Item'
 
 
 const ItemList = ({productos}) => {
@@ -7,7 +7,7 @@ const ItemList = ({productos}) => {
     return (
         <>
             <ul>
-                {productos.map(producto=> <Item key={producto.id} producto = {producto}/>
+                {productos.map(producto=> <Producto key={producto.producto.id} producto = {producto}/>
                 )}
             </ul>
         </>

@@ -2,8 +2,8 @@ import { useCartContext } from "../context/CartContext";
 import CartList from './CartList'
 
 const Cart = () => {
-    const {cartList} = useCartContext();
-    console.log(cartList)
+    const {cart} = useCartContext();
+    console.log(cart)
     return(
         <div>
             <CartList/>

@@ -1,26 +1,28 @@
 import Nav from 'react-bootstrap/Nav'
-import logomauro from '../assets/images/logomauro.png';
+import { useCartContext } from "../context/CartContext";
 
-const Item = ({producto}) => {
+const Producto = ({producto}) => {
+    const {product}= useCartContext()
+        console.log(product)
     return (
         <div key={producto.id} className='card w-50 mt-2'>
                     <div className="card-header">
                         {producto.title}
                     </div>
                     <div className ="card-img-top">
-                    <img src={logomauro} alt="logo"/>
+                    <img src={producto.pictureUrl} alt="logo"/>
                     </div>
                     <div className ="list-group-item">
                         {producto.description}
+                    </div>                   
+                    <div className="card-footer">
+                        {`precio :${producto.price}`}
                     </div>
                     <Nav.Link href={`/item/${producto.id}`}>
-                    <button className="btn btn-outline-primary btn-block">Detalles</button>
+                    <button className="btn btn-outline-warning btn-block">Detalles</button>
                     </Nav.Link>
-                    <div className="card-body">
-                        {producto.price}
-                    </div>
                 </div>
     )
 }
 
-export default Item
+export default Producto

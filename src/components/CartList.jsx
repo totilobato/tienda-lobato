@@ -1,16 +1,19 @@
 import { useCartContext } from "../context/CartContext";
 
 const CartList = () => {
-const {product, precioTotal} = useCartContext();
+const {cart, precioTotal} = useCartContext();
     return (
         <>
             {
-                product.map (prod => <div>
-                                        <p>{prod.item.name}</p>
-                                        <p>{prod.quantity}</p>
-                                    </div>
-                                )}
-                {precioTotal()}
+                cart && cart.map (prod => <div>
+                    <p>{prod.producto.producto.title}</p>
+                    <p>{prod.producto.producto.description}</p>
+                    <p>{prod.producto.producto.pictureUrl}</p>
+                    <p>{prod.producto.producto.price}</p>
+                    <p>{prod.cantidad}</p>
+                    </div>
+                        )}
+                {precioTotal}
         </>
     )    
     }

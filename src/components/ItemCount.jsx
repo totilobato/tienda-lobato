@@ -29,19 +29,8 @@ export default function ItemCount({stock, initial, onAdd}) {
       <h3>{count}</h3>
     <div className ="w-50">
       <button className="btn btn-warning" onClick = {() =>removeCount()}>-</button>
-      {
-        cambiarBoton ? 
-        <div>
-          <Link to ='/cart'>
-            <button className="btn btn-warning btn-block">Finalizar Compra</button>
-          </Link>
-          <Link to ="/">
-          <button className="btn btn-warning btn-block">Continuar Comprando</button>
-          </Link>
-        </div>
-        :
+      
         <button className="btn btn-outline-primary btn-block" onClick={handlerOnAdd}>Agregar al Carrito</button>
-      }
     </div>
     </>
   );
