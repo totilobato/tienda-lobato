@@ -1,9 +1,6 @@
 import Nav from 'react-bootstrap/Nav'
-import { useCartContext } from "../context/CartContext";
 
 const Producto = ({producto}) => {
-    const {product}= useCartContext()
-        console.log(product)
     return (
         <div key={producto.id} className='card w-50 mt-2'>
                     <div className="card-header">
