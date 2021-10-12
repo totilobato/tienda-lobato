@@ -1,13 +1,11 @@
-import React from 'react'
-import Producto from './Item'
+import Item from './Item'
 
 
-const ItemList = ({productos}) => {
-    console.log(ItemList)
+const ItemList = ({items}) => {
     return (
         <>
             <ul>
-                {productos.map(producto=> <Producto key={producto.id} producto = {producto}/>
+                {items.map((item)=> <Item key={item.id} item = {item}/>
                 )}
             </ul>
         </>

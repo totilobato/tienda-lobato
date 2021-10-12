@@ -1,8 +1,8 @@
+import { Link } from 'react-router-dom'
 import {useState} from "react";
-import {Link} from 'react-router-dom'
 import './ItemCount.css'
 
-export default function ItemCount({stock, initial, onAdd}) {
+const ItemCount = ({stock, initial, onAdd}) => {
   const [count, setCount] = useState (initial)
   const [cambiarBoton, setCambiarBoton] = useState(false)
   const addCount = () => {
@@ -24,14 +24,23 @@ export default function ItemCount({stock, initial, onAdd}) {
   return (
     <>
     <div className="w-50">
-    <button className="btn btn-warning" onClick = {addCount}>+</button>
-    </div>      
-      <h3>{count}</h3>
-    <div className ="w-50">
-      <button className="btn btn-warning" onClick = {() =>removeCount()}>-</button>
-      
-        <button className="btn btn-outline-primary btn-block" onClick={handlerOnAdd}>Agregar al Carrito</button>
+            <button className="btn btn-warning" onClick={addCount}>+</button>
+            <label>{count}</label>
+            <button className="btn btn-primary" onClick={removeCount}>-</button><br />
+            { cambiarBoton && 
+                <div>
+                    <Link to='/cart'>
+                        <button className="btn btn-outline-primary btn-block">Finalizar compra</button>
+                    </Link>
+                    <Link to='/'>
+                        <button className="btn btn-outline-warning btn-block">Seguir comprando</button>
+                    </Link>
+                </div>
+            }
+            { !cambiarBoton && <button className="btn btn-outline-primary btn-block" onClick={handlerOnAdd}>Agregar</button>}
     </div>
     </>
   );
   }
+
+  export default ItemCount

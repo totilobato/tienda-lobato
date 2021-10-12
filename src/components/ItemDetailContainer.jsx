@@ -1,33 +1,45 @@
 import {useState, useEffect} from "react"
 import { getFirestore } from '../services/getFirebase';
-import {useParams} from 'react-router';
 import ItemDetail from './ItemDetail';
 
 
 function ItemDetailContainer () {
     const [producto, setProducto] = useState({})
+    const [categorys, setCategorys] = useState([])
     const [loading, setLoading] = useState(true)
-    const {id} = useParams();
 
     useEffect(()=>{
-        let db = getFirestore();
-        let productsCollection = db.collection('productos')
-        const dbQuery = id ? productsCollection.where('id', '==', id) : productsCollection
-        dbQuery.get().then(res => {
-            if (res.size === 0){
-                console.log('No Result')
+        const db = getFirestore();
+        db.collection('productos').doc('7iY0LmMIDBQEx1ql8J9x').get()
+        .then(res => {
+            if(res.exists){
+                setProducto({id: res.id, ...res.data()})
             }
-            setProducto(res.docs.map(producto=>({id: producto.id, ...producto.data()}) ))
         })
-        .catch ((err)=>{
-            console.log('Fail searching Products', err)
-        }). finally(()=>{
-            setLoading(false)
-        })}, [id])
+        .catch(err=>console.log(err))
+        .finally(()=>setLoading(false))
+    }, [])
+
+    useEffect(()=>{
+        const db = getFirestore()
+        db.collection('categoryId').get()
+        .then (res=>{
+            if(res.size !==0){
+                setCategorys (res.doc.map(cat => ({id: cat.id, ...cat.data()})))
+            }
+        })
+        .catch(err=>console.log(err))
+        .finally(()=>setLoading(false))
+    }, []);
         
 return(
     <>
-        {loading ? <h3>Loading...</h3> : <ItemDetail key={producto[0].id} producto={producto[0]}/>}
+        {loading ? <h3>Loading...</h3> 
+        :
+        <div>
+        <ItemDetail producto={producto} categorias={categorys}/>
+        </div>
+}
     </>
     )
 }

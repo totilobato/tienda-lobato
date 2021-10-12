@@ -1,12 +1,12 @@
 import {BrowserRouter, Switch, Route} from "react-router-dom";
-import AppContextProvider from "./context/CartContext";
+import CartContextProvider from "./context/CartContext";
 import {NavBar} from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart'
 function App() {
   return (
-<AppContextProvider>
+<CartContextProvider>
 <BrowserRouter>
   <>
     <NavBar/>
@@ -26,7 +26,7 @@ function App() {
     </Switch>
   </>
 </BrowserRouter>
-</AppContextProvider>
+</CartContextProvider>
   );
 }
 

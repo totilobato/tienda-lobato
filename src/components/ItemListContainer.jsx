@@ -6,33 +6,30 @@ import ItemList from './ItemList'
 
 function ItemListContainer() {
     const [productos, setProductos] = useState([])
-    const [loading, setLoading] = useState(true)
-    const {categoryId = undefined} = useParams();
+    const {categoryId} = useParams();
 
     useEffect (()=>{
-        let db = getFirestore();
-        let productsCollection = db.collection('productos')
-        const dbQuery = categoryId ? productsCollection.where('categoryId', '==', categoryId) : productsCollection
-        dbQuery.get().then(res => {
-            if (res.size === 0){
-                console.log('No Result')
-            }
-            setProductos(res.docs.map(producto=>({id: producto.id, ...producto.data()}) ))
-        })
-        .catch ((err)=>{
-            console.log('Fail searching Products', err)
-        }). finally(()=>{
-            setLoading(false)
-        })}, [categoryId])
+        const db = getFirestore()
+        const queryDB = db.collection ('productos')
+        const queryCondition = categoryId ?
+            queryDB.where('categoryId', '==', categoryId)
+            :
+            queryDB
 
-    return (
-        
-        <div>
-            {loading ? 
-                <h3>Loading...</h3> : <ItemList productos={productos}/>
-                }
-        </div>
-    )
+        queryCondition.get()
+        .then(data =>{
+            if(data.size===0){
+                console.log('empty')
+            }
+            setProductos (data.docs.map(prod => ({id: prod.id, ...prod.data()})))
+        })
+    }, [categoryId])
+
+return (
+    <div>
+        <ItemList items= {productos}/>
+    </div>
+)
 }
 
 export default ItemListContainer

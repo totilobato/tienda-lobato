@@ -1,64 +1,45 @@
-import { useState } from "react";
-import {Link} from 'react-router-dom'
-import ItemCount from './ItemCount';
+import ItemCount from './ItemCount'
 import { useCartContext } from "../context/CartContext";
 import { Col, Row } from "react-bootstrap"
 import logomauro from '../assets/images/logomauro.png';
 
-function ItemDetail (props){
+function ItemDetail ({producto, categorys}){
+    console.log(categorys)
+    const { addProduct } = useCartContext()
     
-    const [cambiarBoton, setCambiarBoton] = useState(false)
-    const producto = props
-    const { addToCart } = useCartContext()
     const onAdd = (cant) =>{
         console.log(cant)
-        addToCart({producto: producto, cantidad: cant})
-        setCambiarBoton (true)
+        addProduct(producto, cant)
     }
-
     return(
         <>
+        {categorys.map(category => <label key={category.categoryId}> {category.title}</label>)}
             <Row>
                 <Col>
-                    <div key={producto.id} className='card w-50 container'>
-                        <div className="card-header">
-                            {producto.producto.title}
+                    <div className='card w-50'>
+                        <div className="container">
+                            <label>{producto.producto.title}</label>
                         </div>
-                    <div className ="card-img-top">
+                    <div className ="container">
                         <img src={logomauro} alt="logo"/>
                     </div>
-                    <div className ="list-group-item">
-                        {producto.producto.description}
+                    <div className ="container">
+                        <label>{producto.producto.description}</label>
                     </div>
-                    
-                    <div className="card-body">
-                        {producto.producto.price}
+                    <div className="container">
+                    <label>{producto.producto.price}</label>
                     </div>
                 </div>
                 </Col>
                 <Col>
-            <div>
-            {cambiarBoton ?
-                <div>
-        <Link to ='/cart'>
-            <button className="btn btn-warning btn-block">Finalizar Compra</button>
-        </Link><br/>
-        <Link to ="/">
-        <button className="btn btn-warning btn-block">Continuar Comprando</button>
-        </Link>
-        </div>
-        : 
-            <ItemCount
-            stock={10}
-            initial={1}
-            onAdd={onAdd}
-            cambiarBoton={cambiarBoton}
-            />}
-        </div>
+                    <ItemCount
+                        stock={10}
+                        initial={1}
+                        onAdd={onAdd}/>
                 </Col>
             </Row>
         </>
-    );  
+    ); 
 }
 
 export default ItemDetail
