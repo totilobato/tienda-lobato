@@ -4,6 +4,7 @@ import {NavBar} from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart'
+
 function App() {
   return (
 <CartContextProvider>
@@ -17,7 +18,7 @@ function App() {
       <Route exact path='/category/:categoryId' component={ItemListContainer}>
         <ItemListContainer greeting='Bienvenidos a Bora Bora GrowShop!'/>
       </Route>
-      <Route exact path='/item/:categoryId' component={ItemDetailContainer}>
+      <Route exact path='/item/:itemId' component={ItemDetailContainer}>
         <ItemDetailContainer/>
       </Route>
     <Route exact path='/Cart' component={Cart}>

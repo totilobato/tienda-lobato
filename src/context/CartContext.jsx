@@ -6,37 +6,37 @@ export const useCartContext = () => useContext(CartContext)
 
 function CartContextProvider({children}){
 
-    const [cart, setCart] = useState([]);
+    const [product, setProducts] = useState([]);
 
     const addProduct = (item, quantity) => {
-        const index = cart.findIndex (i => i.item.id === item.id)
+        const index = product.findIndex (i => i.item.id === item.id)
             if (index > -1) {
-                const oldQuantity = cart[index].quantity
+                const oldQuantity = product[index].quantity
 
-                cart.splice(index, 1)
-                setCart ([...cart, { item, quantity: quantity + oldQuantity}])
+                product.splice(index, 1)
+                setProducts ([...product, { item, quantity: quantity + oldQuantity}])
             }else{
-                setCart ([...cart, {item, quantity}])
+                setProducts ([...product, {item, quantity}])
             }
 }
     const deleteFromCart = (item) => {
-        const deleteProductFromCart = cart.filter((prod)=> prod.item.id !== item.item.id);
-        setCart ([...deleteProductFromCart]);
+        const deleteProductFromCart = product.filter((prod)=> prod.item.id !== item.item.id);
+        setProducts ([...deleteProductFromCart]);
     };
     const iconCart = () => {
-        return cart.reduce((acum, valor) => acum+ valor.quantity, 0)
+        return product.reduce((acum, valor) => acum+ valor.quantity, 0)
     }
     const clearList = () => {
-        setCart ([])
+        setProducts ([])
     }
     const totalPrice = () => {
-        return cart.reduce((acum, valor)=>(acum + (valor.quantity * valor.item.price)), 0)
+        return product.reduce((acum, valor)=>(acum + (valor.quantity * valor.item.price)), 0)
     }
-    console.log(cart)
+    console.log(product)
 
     return (
         <CartContext.Provider value ={{
-            cart,
+            product,
             addProduct,
             deleteFromCart,
             iconCart,

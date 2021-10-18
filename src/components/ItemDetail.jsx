@@ -1,39 +1,35 @@
 import ItemCount from './ItemCount'
 import { useCartContext } from "../context/CartContext";
 import { Col, Row } from "react-bootstrap"
-import logomauro from '../assets/images/logomauro.png';
 
-function ItemDetail ({producto, categorys}){
-    console.log(categorys)
-    const { addProduct } = useCartContext()
+function ItemDetail ({producto}){
     
+    const { addProduct } = useCartContext()
     const onAdd = (cant) =>{
-        console.log(cant)
         addProduct(producto, cant)
     }
     return(
         <>
-        {categorys.map(category => <label key={category.categoryId}> {category.title}</label>)}
             <Row>
                 <Col>
                     <div className='card w-50'>
                         <div className="container">
-                            <label>{producto.producto.title}</label>
+                            <label>{producto.title}</label>
                         </div>
                     <div className ="container">
-                        <img src={logomauro} alt="logo"/>
+                        <img src={producto.pictureUrl} alt="logo"/>
                     </div>
                     <div className ="container">
-                        <label>{producto.producto.description}</label>
+                        <label>{producto.description}</label>
                     </div>
                     <div className="container">
-                    <label>{producto.producto.price}</label>
+                    <label>{producto.price}</label>
                     </div>
                 </div>
                 </Col>
                 <Col>
                     <ItemCount
-                        stock={10}
+                        stock={producto.stock}
                         initial={1}
                         onAdd={onAdd}/>
                 </Col>

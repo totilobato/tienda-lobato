@@ -26,7 +26,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
     <div className="w-50">
             <button className="btn btn-warning" onClick={addCount}>+</button>
             <label>{count}</label>
-            <button className="btn btn-primary" onClick={removeCount}>-</button><br />
+            <button className="btn btn-warning" onClick={removeCount}>-</button><br />
             { cambiarBoton && 
                 <div>
                     <Link to='/cart'>
