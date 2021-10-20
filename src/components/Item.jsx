@@ -3,6 +3,8 @@ import Nav from 'react-bootstrap/Nav'
 const Item = ({item}) => {
         console.log(item)
     return (
+        <div className="container">
+            <div className="row">
         <div key={item.id} className='card w-50 mt-2'>
                     <div className="card-header">
                         {item.title}
@@ -20,6 +22,8 @@ const Item = ({item}) => {
                     <button className="btn btn-outline-warning btn-block">Detalles</button>
                     </Nav.Link>
                 </div>
+                </div>
+            </div>
     )
 }
 

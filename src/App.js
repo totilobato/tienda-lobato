@@ -4,12 +4,13 @@ import {NavBar} from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart'
+import './App.css'
 
 function App() {
   return (
 <CartContextProvider>
 <BrowserRouter>
-  <>
+  <div className="appStyle">
     <NavBar/>
     <Switch>
       <Route exact path='/'>
@@ -25,7 +26,7 @@ function App() {
       <Cart/>
     </Route>
     </Switch>
-  </>
+  </div>
 </BrowserRouter>
 </CartContextProvider>
   );

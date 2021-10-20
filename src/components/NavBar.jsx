@@ -5,6 +5,8 @@ import logomauro from '../assets/images/logomauro.png';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { BsFillArchiveFill } from 'react-icons/bs';
 import { useCartContext } from "../context/CartContext";
+import '../App.css'
+
 export const NavBar = (props) =>{
     const {count} = props
     const {iconCart} = useCartContext
@@ -46,7 +48,7 @@ export const NavBar = (props) =>{
         <CartWidget count={count}/>
     </Link>
 </nav>
-    <h1>Bora Bora GrowShop</h1>
+    <h1 className="tituloBorabora">Bora Bora GrowShop</h1>
         </div>   
     )
 }
